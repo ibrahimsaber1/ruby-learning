@@ -1,0 +1,35 @@
+
+def convert_char(char, key)
+
+  puts "char >> #{char} -- key >> #{key}"
+  
+  alphabet = ('a'..'z').to_a
+  return char unless alphabet.include?(char)
+  char_index = alphabet.index(char)
+  new_index = (key + char_index) % 26
+
+  puts "new index >> #{new_index} -- new char >> #{alphabet[new_index]}"
+  return alphabet[new_index]
+end
+
+
+def caesar_cipher(txt, key)
+  txt = txt.downcase
+  new_arr = []
+
+  txt.each_char do |i|
+    new_char = convert_char(i, key)
+    new_arr.append(new_char)
+  end
+
+  puts "the new arr is >> #{new_arr}"
+  puts "the new arr is >> #{new_arr.join}"
+
+end
+
+txt = 'What a string!'
+key = 5
+
+caesar_cipher(txt, key) # the new arr is >> bmfy f xywnsl!
+
+
